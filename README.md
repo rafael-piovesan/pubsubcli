@@ -1,4 +1,4 @@
-# digital-pkg/pubsubcli
+# pubsubcli
 A really simple CLI for managing local PubSub Emulator.
 
 ## Installation
