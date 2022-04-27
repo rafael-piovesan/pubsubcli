@@ -1,6 +1,6 @@
 package main
 
-import "github.com/hashlab/digital-pkg/pubsubcli/cmd"
+import "github.com/rafael-piovesan-hash/pubsubcli/cmd"
 
 func main() {
 	cmd.Execute()

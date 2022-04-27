@@ -1,4 +1,4 @@
-module github.com/hashlab/digital-pkg/pubsubcli
+module github.com/rafael-piovesan-hash/pubsubcli
 
 go 1.18
 
