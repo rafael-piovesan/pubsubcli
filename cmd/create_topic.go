@@ -28,6 +28,24 @@ var createTopicCmd = &cobra.Command{
 		} else {
 			log.Print("topic already exists")
 		}
+
+		// Also create Dead Letter Topic
+		dltTopicID := topicID + ".dlt"
+		dltTopic := client.Topic(dltTopicID)
+
+		dltExists, err := dltTopic.Exists(ctx)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if !dltExists {
+			dltTopic, err = client.CreateTopicWithConfig(ctx, dltTopicID, &pubsub.TopicConfig{})
+			if err != nil {
+				log.Fatal(err)
+			} else {
+				log.Print("dlt topic created")
+			}
+		}
 	},
 }
 

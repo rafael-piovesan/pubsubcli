@@ -28,6 +28,24 @@ var createSubscriptionCmd = &cobra.Command{
 			}
 		}
 
+		// Also create Dead Letter Topic
+		dltTopicID := topicID + ".dlt"
+		dltTopic := client.Topic(dltTopicID)
+
+		dltExists, err := dltTopic.Exists(ctx)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if !dltExists {
+			dltTopic, err = client.CreateTopicWithConfig(ctx, dltTopicID, &pubsub.TopicConfig{})
+			if err != nil {
+				log.Fatal(err)
+			} else {
+				log.Print("dlt topic did not exist, was also created")
+			}
+		}
+
 		subscription := client.Subscription(subscriptionID)
 		subExists, err := subscription.Exists(ctx)
 		if err != nil {
@@ -40,6 +58,10 @@ var createSubscriptionCmd = &cobra.Command{
 				pubsub.SubscriptionConfig{
 					Topic:       topic,
 					AckDeadline: 20 * time.Second,
+					DeadLetterPolicy: &pubsub.DeadLetterPolicy{
+						DeadLetterTopic:     dltTopic.String(),
+						MaxDeliveryAttempts: 5,
+					},
 				},
 			)
 			if err != nil {
