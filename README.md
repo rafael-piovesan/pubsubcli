@@ -3,17 +3,12 @@ A really simple CLI for managing local PubSub Emulator.
 
 ## Installation
 
-Change your `~/.gitconfigure` to use SSH instead of HTTPS, more details [here](https://go.dev/doc/faq#git_https).
-
 ```sh
-# Add it to private repos list
-go env -w GOPRIVATE=github.com/rafael-piovesan-hash/pubsubcli
-
 # Download the module
-go get github.com/rafael-piovesan-hash/pubsubcli
+go get github.com/rafael-piovesan/pubsubcli
 
 # Install it
-go install github.com/rafael-piovesan-hash/pubsubcli
+go install github.com/rafael-piovesan/pubsubcli
 ```
 
 ## Docs

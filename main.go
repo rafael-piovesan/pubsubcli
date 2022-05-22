@@ -1,6 +1,6 @@
 package main
 
-import "github.com/rafael-piovesan-hash/pubsubcli/cmd"
+import "github.com/rafael-piovesan/pubsubcli/cmd"
 
 func main() {
 	cmd.Execute()
