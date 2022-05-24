@@ -4,11 +4,8 @@ A really simple CLI for managing local PubSub Emulator.
 ## Installation
 
 ```sh
-# Download the module
-go get github.com/rafael-piovesan/pubsubcli
-
 # Install it
-go install github.com/rafael-piovesan/pubsubcli
+go install github.com/rafael-piovesan/pubsubcli@latest
 ```
 
 ## Docs
